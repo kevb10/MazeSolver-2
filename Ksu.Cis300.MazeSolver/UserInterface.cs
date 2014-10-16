@@ -25,65 +25,6 @@ namespace Ksu.Cis300.MazeSolver
         }
 
         /// <summary>
-        /// The method used to solve the maze generated
-        /// </summary>
-        /*
-        private void Solve(Cell cell)
-        {
-            _directionStack = new Stack<Direction>();
-            _rows = uxMaze.MazeHeight;
-            _cols = uxMaze.MazeWidth;
-            _theDirection = Direction.North;
-            _isVisited = new bool[_rows, _cols];
-            _isVisited[cell.Row, cell.Column] = true;
-
-            while (uxMaze.IsInMaze(cell))
-            {
-
-                if (_theDirection <= Direction.West)
-                {
-                    if (uxMaze.IsClear(cell, _theDirection) && ((uxMaze.IsInMaze(uxMaze.Step(cell, _theDirection))==false ||
-                         _isVisited[uxMaze.Step(cell, _theDirection).Row,uxMaze.Step(cell, _theDirection).Column]==false)))
-                    {
-                        // Console.WriteLine("Is clear and is not visited");
-                        uxMaze.DrawPath(cell, _theDirection);
-                        _isVisited[cell.Row, cell.Column] = true;
-                        cell = uxMaze.Step(cell, _theDirection);
-                        _directionStack.Push(_theDirection);
-                        _theDirection = Direction.North;
-                    }
-
-                    else
-                    {
-                        if (_theDirection <= Direction.West)
-                        {
-                            // Console.WriteLine("Incrementing");
-                            _theDirection++;
-                            
-                        }
-                    }
-                }
-
-                if (_theDirection > Direction.West &&
-                    _directionStack.Count != 0)
-                {
-                    Console.WriteLine("Pop direction");
-                    _theDirection = _directionStack.Pop();
-                    cell = uxMaze.ReverseStep(cell, _theDirection);
-                    uxMaze.ErasePath(cell, _theDirection);
-                    _theDirection++;
-                }
-
-                if (_theDirection > Direction.West && _directionStack.Count == 0)
-                {
-                    MessageBox.Show("Can't go anywhere from here");
-                    break;
-                }
-            }
-        }
-         */
-
-        /// <summary>
         /// Handles new maze button event on click.
         /// This will generate a completely new maze.
         /// </summary>
@@ -119,6 +60,12 @@ namespace Ksu.Cis300.MazeSolver
 
         }
 
+        /// <summary>
+        /// Checks whether a path is found in the maze
+        /// </summary>
+        /// <param name="cell">the current cell</param>
+        /// <param name="flag">flags if the current cell position has been visited</param>
+        /// <returns></returns>
         private bool PathFound(Cell cell, bool[,] flag)
         {
 
